@@ -44,6 +44,10 @@ div {
   align-items: center;
 }
 
+.d-none{
+  display: none;
+}
+
 .more-btn{
   box-sizing: border-box;
   margin-left: 10px;
@@ -57,11 +61,6 @@ div {
   justify-content: center;
   align-items: center;
   transition: 0.4s;
-}
-
-.more-btn:hover{
-  background-color: black;
-  color: white;
 }
 
 .like-btn{
@@ -94,3 +93,64 @@ div {
   background : #eee;
   text-align : left;
 }
+
+.submit-box{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.submit-box input{
+  width: 240px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
+  border: none;
+}
+
+.submit-box input:focus {
+  outline:none;
+  border: none;
+}
+
+.sort-btn{
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+  font-size: 10pt;
+}
+.sort-btn > button:focus{
+  outline: 0;
+  border: none;
+}
+
+.submit-btn{
+  font-size: 11pt;
+  margin-left: 6px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+.more-btn{
+  font-size: 9pt;
+  height: 30px;
+  width: 50px;
+  /* border: none; */
+  border: 2px solid black;
+  outline: none;
+}
+
+.more-btn:hover, .more-btn:focus{
+  outline: none;
+  border: 2px solid black;
+  background-color: black;
+  color: white;
+}
+
