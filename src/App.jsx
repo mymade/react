@@ -3,11 +3,6 @@ import './App.css'
 
 function App() {
     const [count, setCount] = useState([0, 0, 0])
-    // let [글제목,글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학'])
-
-    // 리액트는 코드를 순차적으로 실행하므로 useState 안에 실행될 변수는 그 앞에 위치해야 한다.
-
-
 
     const moreData = [
       { key:"0", title:"남자 코트 추천", sub:"코트 나라", detail:"상세 내용1", date:"2024-12-20",},
@@ -15,48 +10,19 @@ function App() {
       {key:"2", title:"파이썬 독학", sub:"코딩애플", detail:"상세 내용3", date:"2024-12-22"}
     ]
 
+    const [데이터, set데이터] = useState(moreData)
     
 
-    const [데이터, set데이터] = useState(() => {
-      const savedData = localStorage.getItem('데이터');
-      return savedData ? JSON.parse(savedData) : moreData;
-    });
-    
-    
-
-
-    const [글제목,글제목변경] = useState(["남자 코트 추천", "강남 우동 맛집","파이썬 독학"])
-
-    // a는 usestate에 넣은 값, b는 state 변경을 도와주는 함수이다.
-    // 위의 문법은 let [a, c] = [0, 1] 와 같은 문법이다.
-    // 위에서 오른쪽의 값 상태는 ['남자 코트 추천',''] < 상태라고 볼 수 있다.
-    // 변수와 state의 차이 -> 일반 변수는 갑자기 변경되면 html에 반영이 되지 않는다.
-    // 반면 state 쓰던 html은 자동 재렌더링이 된다.
     let [모달창안열림,모달창열림] = useState([false,false,false]);
-    let mapArray = [1,2,3].map(function(){
-      return '111112211'
-    })
+ 
     let [버튼명, set버튼명] = useState([false, false, false])
 
 
 
     let [liked, setliked] = useState([false,false,false])
 
-    console.log(mapArray)
 
     const [issort, setSort] = useState(true)
-
-
-    // function postFilter(){
-    //   let new글제목 = [...글제목]
-    //   new글제목.sort()
-    //   글제목변경(new글제목)
-
-    //   let new데이터=[...데이터]
-    //   new데이터 = new데이터.sort()
-    //   set데이터(new데이터)
-      
-    // }
 
 
     function postFilter(){
@@ -83,24 +49,6 @@ function App() {
         set데이터(추가데이터)
       }
   
-  // 원시깂깂
-  let go = "이름"    
-  let newGo = [...go]
-  newGo = "이름ㅋ"
-  console.log(newGo)
-
-  // 얕은 복사
-  let no = { title: "제목입니다", detail: "정보입니다", date: { year: "2025" } };
-
-  // 깊은 복사 (직접 구현한 방법)
-  let newNo = JSON.parse(JSON.stringify(no));  // 깊은 복사
-  // JSON.stringity(변수명) 이 메서드는 (변수명) 객체를 json 문자열로 변환한다. 
-  
-  newNo.date.year = "2026";  // newNo에서 year를 수정
-  
-  console.log(no.date.year);    // "2025"  (no는 영향을 받지 않음)
-  console.log(newNo.date.year); // "2026"  (newNo만 수정됨)
-  
   
 
     function openModal(i){
@@ -126,13 +74,7 @@ function App() {
       });
     }
 
-    function moreBtn(i){
-      console.log("왜않되")
-      let new데이터 = [...데이터];
-      new데이터[i] = {...new데이터[i], title: new데이터[i].title == "남자 코트 추천" ? "여자코트추천" : "남자코트ㅇ추천"}// 예시로 값 변경
-      // new데이터[i] = {...new데이터[i], title: "제목임"};
-      set데이터(new데이터)
-    }
+
 
   return (
     <>
@@ -156,7 +98,7 @@ function App() {
         {
           데이터.map((a,i)=>{
             return(
-              <div className="list" key={a.i}>
+              <div className="list" key={a.key}>
                 <div className='d-flex'> 
                   <h4>{ a.title }</h4>
                   <button className='more-btn' onClick={()=>{openModal(i)}}>{버튼명[i] == false ? "더보기":"닫기"}</button>
